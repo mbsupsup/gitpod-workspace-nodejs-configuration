@@ -1,1 +1,1 @@
-# Gitpod Workspace for NodeJS
+# Gitpod Workspace for Node.js
