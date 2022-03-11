@@ -10,11 +10,11 @@ const connection = mysql.createConnection({
 
 connection.connect(function(err) {
     if (err) {
-        console.error('error connecting: ' + err.stack);
+        console.error('Error connecting: ' + err.stack);
         return;
     }
 
-    console.log('Connected as id ' + connection.threadId);
+    console.log('Connected as ID ' + connection.threadId);
 });
 
 connection.query('SELECT * FROM Contact', function (error, results, fields) {
