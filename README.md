@@ -1,1 +1,1 @@
-# gitpod-workspace-nodejs-configuration
+# Gitpod Workspace for NodeJS
