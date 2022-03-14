@@ -18,7 +18,14 @@ connection.connect(function(err) {
 });
 
 router.get('/contact', function(req, res){
-    res.send({type: 'GET'});
+    connection.query("SELECT * FROM Contact", function(error, results, fields){
+        if(error){
+            res.status(500).send({error: error});
+        }
+        else{
+            res.json([results]);
+        }
+    });
 });
 
 router.post('/contact', function(req, res){
