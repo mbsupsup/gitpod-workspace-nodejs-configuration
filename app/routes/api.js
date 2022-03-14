@@ -23,7 +23,7 @@ router.get('/contact', function(req, res){
             res.status(500).send({error: error});
         }
         else{
-            res.json([results]);
+            res.json(results);
         }
     });
 });
