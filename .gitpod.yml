@@ -1,5 +1,12 @@
 image:
     file: .gitpod.Dockerfile
+    
+tasks:
+  - name: Dependencies and Database
+    init: |
+      npm install
+      node app/create-database
+    
 ports:
   - port: 4000
     visibility: public
