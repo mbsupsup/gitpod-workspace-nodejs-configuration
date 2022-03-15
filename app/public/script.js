@@ -50,7 +50,8 @@ function displayRecords(){
 getData().then(data => {
   let tableBodyContent = "";
   data.map((records)=>{
-      tableBodyContent = `<tr>
+      
+      tableBodyContent += `<tr>
           <td>${records.contactId}</td>
           <td>${records.firstName}</td>
           <td>${records.lastName}</td>
