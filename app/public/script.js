@@ -3,7 +3,8 @@ const getRecords = document.getElementById("link-get-records");
 const formContainer = document.getElementById("form-container");
 const form = document.getElementById("post-form");
 const tableBody = document.getElementById("tbl-records-body");
-const formTitle = document.getElementById("form-title")
+const formTitle = document.getElementById("form-title");
+const btnSubmit = document.getElementById("btn-submit");
 
 /*Form Input Variables*/
 const firstNameInput = document.getElementById("first-name");
@@ -85,6 +86,28 @@ tableBody.addEventListener('click',(e)=>{
     salaryInput.value = rowSalary;
     addressInput.value = rowAddress;
 
+    //update through API
+    btnSubmit.addEventListener('click',(e)=>{
+      //if submit button is pressed but it is for update function, preventDefault removes default POST function
+      e.preventDefault();
+      fetch('api/contact/'+selectedId,{
+        method: "PUT",
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          firstName: firstNameInput.value,
+          lastName: lastNameInput.value,
+          email: emailInput.value,
+          age: ageInput.value,
+          salary: salaryInput.value,
+          address: addressInput.value
+        })
+      }).then(res => res.json())
+      .then(location.reload()) //reload page after updating to avoid error where "Add New Record" still updates a record instead of adding
+    });
+
+
   }
   
 });
@@ -118,6 +141,7 @@ function showForm(title) {
     }
     if(title == "Add A New Record"){
       form.reset();
+
     }
 
     //Change title depending on whether form is update or new record
