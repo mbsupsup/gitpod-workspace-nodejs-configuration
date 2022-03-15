@@ -33,12 +33,12 @@
 </div>
 
 <div id="buttons">
-        <button onclick="showForm()" class="btn btn-success">Add New Record</button>
+        <button onclick="showForm('Add A New Record')" class="btn btn-success">Add New Record</button>
 </div>
 
 <div id="form-container" method="POST" class="container-sm" style="display: none;">
     <form id="post-form" class="row g-3 border border-dark mt-3">
-        <p><b>Add New Record</b></p>
+        <p id="form-title"><b></b></p>
         <div class="row">
             <div class="col">
                 <label for="" class="form-label">First Name: </label>
