@@ -2,6 +2,7 @@
 const getRecords = document.getElementById("link-get-records");
 const formContainer = document.getElementById("form-container");
 const form = document.getElementById("post-form");
+const tableBody = document.getElementById("tbl-records-body");
 
 /*Form Variables*/
 const firstName = document.getElementById("first-name");
@@ -15,7 +16,7 @@ const address = document.getElementById("address");
 displayRecords();
 
 
-//Submit POST data
+//Submit POST data if submit button is clicked
 form.addEventListener('submit',function(e){
   // prevent from going to a different page upon clicking submit button
   e.preventDefault();
@@ -44,6 +45,27 @@ form.addEventListener('submit',function(e){
   form.reset();
 });
 
+//update and delete data
+tableBody.addEventListener('click',(e)=>{
+  e.preventDefault();
+  //if e.target.id is equal to the button's id name (update or delete), it means that's the desired action
+  let deleteBtnIsPressed = (e.target.id == "delete-record");
+  let updateBtnIsPressed = (e.target.id == "update-record");
+
+  //get the selected record's id (declaration is in data-id in update/delete button)
+  let selectedId = e.target.dataset.id;
+
+  //perform action based on the button
+  if(deleteBtnIsPressed){
+    fetch('api/contact/'+selectedId,{
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(displayRecords());
+  }
+  
+});
+
 /* FUNCTIONS */
 function displayRecords(){
   //Get Records from API and Attach to tbl-records
@@ -59,12 +81,12 @@ getData().then(data => {
           <td>${records.age}</td>
           <td>${records.salary}</td>
           <td>${records.address}</td>
-          <td><button class="btn btn-primary">Update</button></td>
-          <td><button class="btn btn-danger">Delete</button></td>
+          <td><button class="btn btn-primary" id="update-record"  data-id=${records.contactId}>Update</button></td>
+          <td><button class="btn btn-danger"id="delete-record"  data-id=${records.contactId}>Delete</button></td>
           </tr>`;
 
   });
-  document.getElementById("tbl-records-body").innerHTML = tableBodyContent;
+  tableBody.innerHTML = tableBodyContent;
 });
 }
 function showForm() {
