@@ -6,6 +6,11 @@ const port = 4000;
 //serve html using express
 app.use(express.static('./app/public'));
 
+//for posting from frontend
+app.use(express.json()); //accept data in json format
+app.use(express.urlencoded()); //decode data sent through html form
+
+
 // use body-parser
 app.use(bodyParser.json());
 

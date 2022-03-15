@@ -36,36 +36,36 @@
         <button onclick="showForm()" class="btn btn-success">Add New Record</button>
 </div>
 
-<div id="post-form" class="container-sm" style="display: none;">
-    <form action=" method="post" class="row g-3 border border-dark mt-3">
+<div id="form-container" method="POST" class="container-sm" style="display: none;">
+    <form id="post-form" class="row g-3 border border-dark mt-3">
         <p><b>Add New Record</b></p>
         <div class="row">
             <div class="col">
                 <label for="" class="form-label">First Name: </label>
-                <input type="text" name="firstName" class="form-control m-2">
+                <input type="text" name="firstName" id="first-name" class="form-control m-2">
             </div>
             <div class="col">
                 <label for="" class="form-label">Last Name: </label>
-                <input type="text" name="lastName" class="form-control m-2">
+                <input type="text" name="lastName" id="last-name" class="form-control m-2">
             </div>
         </div>
         <div class="row">
             <label for="" class="form-label">Email: </label>
-            <input type="email" name="email" class="form-control m-2">
+            <input type="email" name="email" id="email" class="form-control m-2">
         </div>  
         <div class="row">      
             <label for="" class="form-label">Age: </label>
-            <input type="number" name="age" class="form-control m-2">
+            <input type="number" name="age" id="age" class="form-control m-2">
         </div>
         <div class="row">
             <label for="" class="form-label">Salary: </label>
-            <input type="number" name="salary" class="form-control m-2">
+            <input type="number" name="salary" id="salary" class="form-control m-2">
         </div>
         <div class="row">
             <label for="" class="form-label">Address: </label>
-            <input type="text" name="address" class="form-control m-2">
+            <input type="text" name="address" id="address" class="form-control m-2">
         </div>
-        <button type="submit" class="btn btn-success m-2" style="max-width: 10%;">Submit</button>
+        <button type="submit" name="btnSubmit" class="btn btn-success m-2" style="max-width: 10%;">Submit</button>
     </form>
 </div>
 
