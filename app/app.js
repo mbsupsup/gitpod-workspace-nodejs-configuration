@@ -7,12 +7,11 @@ const port = 4000;
 app.use(express.static('./app/public'));
 
 //for posting from frontend
-app.use(express.json()); //accept data in json format
-app.use(express.urlencoded()); //decode data sent through html form
-
+// app.use(express.json()); //accept data in json format
+// app.use(express.urlencoded()); //decode data sent through html form
 
 // use body-parser
-app.use(bodyParser.json());
+app.use(bodyParser.json()); //accept data in json format
 
 // initialize routes
 app.use('/api', require('./routes/api'));
@@ -21,7 +20,6 @@ app.use('/api', require('./routes/api'));
 app.listen(process.env.port || port, function(){
     console.log('Now listening for requests...');
 });
-
 
 
 //for serving html
